@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Paleta quente e vibrante de culinária */
+  --cream:     #fdf6ee;
+  --warm-50:   #fff8f0;
+  --warm-100:  #fdebd4;
+  --warm-200:  #f9d5a7;
+  --orange:    #e8651a;
+  --orange-d:  #c4500e;
+  --orange-l:  #ff8243;
+  --green:     #3a7d44;
+  --green-l:   #52a65e;
+  --red:       #c0392b;
+  --brown:     #6b3a2a;
+  --brown-l:   #9c5b3e;
+  --text-dark: #1e1208;
+  --text-mid:  #5c3d28;
+  --text-muted:#9a7b60;
+  --white:     #ffffff;
+  --card-bg:   #ffffff;
+  --border:    rgba(107,58,42,0.12);
+  --shadow-sm: 0 2px 12px rgba(107,58,42,0.08);
+  --shadow-md: 0 8px 32px rgba(107,58,42,0.14);
+  --shadow-lg: 0 20px 60px rgba(107,58,42,0.2);
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
