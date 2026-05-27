@@ -138,3 +138,37 @@
   object-fit: cover;
   border-radius: 4px;
 }
+
+/* ── Validação de formulário ── */
+
+/* Campo com erro: borda vermelha + leve fundo */
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-color: #d32f2f;
+  background: #fff5f5;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+/* Mensagem de erro inline abaixo do campo */
+.field-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+/* Botão desabilitado durante loading */
+.btn-primary:disabled,
+.btn-secondary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Badge externo no RecipeCard */
+.badge-external {
+  background: #3b82f6 !important;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.4) !important;
+}

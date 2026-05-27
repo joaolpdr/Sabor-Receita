@@ -1,12 +1,32 @@
 import { useNavigate } from 'react-router-dom';
 import './RecipeCard.css';
 
+/**
+ * RecipeCard — exibe uma receita no formato de card.
+ *
+ * Props:
+ *  - recipe: objeto de receita (local ou externo)
+ *
+ * Comportamento:
+ *  - Se recipe.external === true → abre TheMealDB no navegador (nova aba)
+ *  - Se recipe.external !== true → navega para a rota interna /receita/:id
+ */
 function RecipeCard({ recipe }) {
-  const { id, title, prepTime, category, rating, image, chef } = recipe;
+  const { id, title, prepTime, category, rating, image, chef, external, sourceUrl } = recipe;
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    if (external) {
+      // Receita da API externa: redireciona para a fonte
+      const target = sourceUrl || `https://www.themealdb.com/meal/${id}`;
+      window.open(target, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(`/receita/${id}`);
+    }
+  };
+
   return (
-    <div className="recipe-card" onClick={() => navigate(`/receita/${id}`)}>
+    <div className="recipe-card" onClick={handleClick}>
       <div className="recipe-image-wrap">
         <img
           src={image}
@@ -19,6 +39,7 @@ function RecipeCard({ recipe }) {
           {category.slice(0, 1).map((c) => (
             <span key={c} className="category-badge">{c}</span>
           ))}
+          {external && <span className="category-badge badge-external">🌐 Global</span>}
         </div>
         <div className="recipe-rating-badge">
           <span className="star-icon">★</span>
@@ -34,7 +55,7 @@ function RecipeCard({ recipe }) {
             </svg>
             {prepTime}
           </span>
-          <span className="recipe-chef-small">Chef {chef}</span>
+          <span className="recipe-chef-small">{external ? `🌍 ${chef}` : `Chef ${chef}`}</span>
         </div>
         <h3 className="recipe-title">{title}</h3>
         <div className="recipe-card-footer">
@@ -43,7 +64,9 @@ function RecipeCard({ recipe }) {
               <span key={c} className="tag">{c}</span>
             ))}
           </div>
-          <span className="recipe-see-more">Ver receita →</span>
+          <span className="recipe-see-more">
+            {external ? 'Ver na fonte ↗' : 'Ver receita →'}
+          </span>
         </div>
       </div>
     </div>

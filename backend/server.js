@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +20,7 @@ if (!fs.existsSync('./uploads')) {
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: 'Puc@12345A',
   database: 'Sabor_Receita'
 });
 
