@@ -25,7 +25,7 @@ function Admin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5001/api/login', {
+      const response = await fetch('http://localhost:5000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -41,18 +41,18 @@ function Admin() {
     } catch (error) {
       // Simulate login if API fails to fetch
       if (username === 'admin' && password === 'admin') {
-         localStorage.setItem('token', 'simulated_token_123');
-         setIsLoggedIn(true);
-         fetchRecipes();
+        localStorage.setItem('token', 'simulated_token_123');
+        setIsLoggedIn(true);
+        fetchRecipes();
       } else {
-         setLoginError('Erro de conexão e credenciais inválidas');
+        setLoginError('Erro de conexão e credenciais inválidas');
       }
     }
   };
 
   const fetchRecipes = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/recipes');
+      const response = await fetch('http://localhost:5000/api/recipes');
       const data = await response.json();
       setRecipes(data);
     } catch (error) {
@@ -84,7 +84,7 @@ function Admin() {
     }
 
     try {
-      const response = await fetch('http://localhost:5001/api/recipes', {
+      const response = await fetch('http://localhost:5000/api/recipes', {
         method: 'POST',
         body: formData
       });
@@ -98,10 +98,10 @@ function Admin() {
     } catch (error) {
       setSubmitMessage('Erro de conexão, simulando adição.');
       const newRecipe = {
-         id: Math.random(),
-         title,
-         description,
-         image_url: imagePreview
+        id: Math.random(),
+        title,
+        description,
+        image_url: imagePreview
       };
       setRecipes([...recipes, newRecipe]);
       setTitle('');
@@ -131,7 +131,7 @@ function Admin() {
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
           </div>
           <button type="submit" className="btn-primary">Entrar</button>
-          <p style={{marginTop: '10px', fontSize: '12px', color: '#666'}}>Dica: admin / admin</p>
+          <p style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>Dica: admin / admin</p>
         </form>
       </div>
     );
@@ -180,7 +180,7 @@ function Admin() {
                   <h4>{recipe.title}</h4>
                   <p>{recipe.description.substring(0, 50)}...</p>
                 </div>
-                {recipe.image_url && <img src={recipe.image_url.startsWith('data') ? recipe.image_url : `http://localhost:5001${recipe.image_url}`} alt={recipe.title} />}
+                {recipe.image_url && <img src={recipe.image_url.startsWith('data') ? recipe.image_url : `http://localhost:5000${recipe.image_url}`} alt={recipe.title} />}
               </div>
             ))}
             {recipes.length === 0 && <p>Nenhuma receita encontrada.</p>}

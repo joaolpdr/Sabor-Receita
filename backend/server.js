@@ -7,20 +7,20 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 5001;
+const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-if (!fs.existsSync('./uploads')){
-    fs.mkdirSync('./uploads');
+if (!fs.existsSync('./uploads')) {
+  fs.mkdirSync('./uploads');
 }
 
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password', 
+  password: 'password',
   database: 'Sabor_Receita'
 });
 
@@ -81,10 +81,10 @@ app.get('/api/recipes', (req, res) => {
 app.post('/api/recipes', upload.single('image'), (req, res) => {
   const { title, description } = req.body;
   const image_url = req.file ? `/uploads/${req.file.filename}` : '';
-  
+
   db.query('INSERT INTO recipes (title, description, image_url) VALUES (?, ?, ?)', [title, description, image_url], (err, result) => {
     if (err) {
-        return res.json({ id: 999, title, description, image_url, status: 'simulated' });
+      return res.json({ id: 999, title, description, image_url, status: 'simulated' });
     }
     res.json({ id: result.insertId, title, description, image_url });
   });
