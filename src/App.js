@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Recipes from './pages/Recipes';
 import RecipeDetail from './pages/RecipeDetail';
 import Sobre from './pages/Sobre';
+import Admin from './pages/Admin';
 import './styles/global.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/receitas" element={<Recipes />} />
           <Route path="/receita/:id" element={<RecipeDetail />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -19,6 +19,7 @@ function Header() {
     { path: '/', label: 'Início' },
     { path: '/receitas', label: 'Receitas' },
     { path: '/sobre', label: 'Sobre' },
+    { path: '/admin', label: 'Admin' },
   ];
 
   return (
