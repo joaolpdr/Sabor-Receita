@@ -1,13 +1,3 @@
-/**
- * recipeService.js
- * Camada de serviço responsável por todas as chamadas
- * HTTP relacionadas ao backend próprio da aplicação.
- *
- * Separar a lógica de fetch dos componentes garante:
- *  - Reutilização das funções em qualquer parte do app
- *  - Fácil manutenção (um único lugar para alterar a base URL)
- *  - Componentes mais limpos (só lidam com estado/UI)
- */
 
 const API_BASE_URL = 'http://localhost:5001/api';
 
